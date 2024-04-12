@@ -31,6 +31,6 @@ clean:
 run: all
 	for BIN in $(BINS); do \
 		echo $$BIN start; \
-		time ./$$BIN; \
+		chrt -f 99 time ./$$BIN; \
 		echo; \
 	done
