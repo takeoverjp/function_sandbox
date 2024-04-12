@@ -1,9 +1,11 @@
-#include <functional>
+#include <stdint.h>
 #include <stdio.h>
 
-static inline uint64_t increment(uint64_t num) {
-  return num + 1;
-};
+#include <functional>
+
+#include "common.h"
+
+static inline uint64_t increment(uint64_t num) { return num + 1; };
 
 static uint64_t call(uint64_t num) {
   uint64_t ret = 0;
@@ -13,9 +15,9 @@ static uint64_t call(uint64_t num) {
   return ret;
 }
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
   printf("%s start\n", argv[0]);
-  auto ret = call(1000000000);
+  auto ret = call(kLoopCount);
   printf("%s end (ret=%lu)\n", argv[0], ret);
   return 0;
 }

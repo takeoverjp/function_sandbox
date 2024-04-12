@@ -1,3 +1,10 @@
+SRCS=\
+	inline_func.cc \
+	lambda.cc \
+	macro_func.cc \
+	normal_func.cc \
+	std_func.cc \
+
 BINS=\
 	inline_func_clang \
 	inline_func_gcc \
@@ -17,7 +24,7 @@ clean:
 	rm -f $(BINS)
 .PHONY: clean
 
-run: $(BINS)
+run: all
 	for BIN in $(BINS); do \
 		time ./$$BIN; \
 	done
@@ -28,29 +35,29 @@ inline_func_gcc: inline_func.cc
 	g++ $(CXXFLAGS) -o $@ $^
 
 inline_func_clang: inline_func.cc
-	clang $(CXXFLAGS) -o $@ $^
+	clang++ $(CXXFLAGS) -o $@ $^
 
 lambda_gcc: lambda.cc
 	g++ $(CXXFLAGS) -o $@ $^
 
 lambda_clang: lambda.cc
-	clang $(CXXFLAGS) -o $@ $^
+	clang++ $(CXXFLAGS) -o $@ $^
 
 macro_func_gcc: macro_func.cc
 	g++ $(CXXFLAGS) -o $@ $^
 
 macro_func_clang: macro_func.cc
-	clang $(CXXFLAGS) -o $@ $^
+	clang++ $(CXXFLAGS) -o $@ $^
 
 normal_func_gcc: normal_func.cc
 	g++ $(CXXFLAGS) -o $@ $^
 
 normal_func_clang: normal_func.cc
-	clang $(CXXFLAGS) -o $@ $^
+	clang++ $(CXXFLAGS) -o $@ $^
 
 std_func_gcc: std_func.cc
 	g++ $(CXXFLAGS) -o $@ $^
 
 std_func_clang: std_func.cc
-	clang $(CXXFLAGS) -o $@ $^
+	clang++ $(CXXFLAGS) -o $@ $^
 
