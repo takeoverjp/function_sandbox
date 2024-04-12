@@ -18,8 +18,8 @@ static uint64_t call(uint64_t num) {
 }
 
 int main(int argc, char *argv[]) {
-  printf("%s start\n", argv[0]);
+  PRINTF("%s start\n", argv[0]);
   auto ret = call(kLoopCount);
-  printf("%s end (ret=%lu)\n", argv[0], ret);
+  PRINTF("%s end (ret=%lu)\n", argv[0], ret);
   return 0;
 }
