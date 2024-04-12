@@ -1,9 +1,9 @@
-#include <functional>
+#include <stdint.h>
 #include <stdio.h>
 
-static uint64_t increment(uint64_t num) {
-  return num + 1;
-};
+#include <functional>
+
+#define increment(num) (num + 1)
 
 static uint64_t call(uint64_t num) {
   uint64_t ret = 0;

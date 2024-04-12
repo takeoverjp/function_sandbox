@@ -1,7 +1,7 @@
 #include <functional>
 #include <stdio.h>
 
-static uint64_t increment(uint64_t num) {
+static inline uint64_t increment(uint64_t num) {
   return num + 1;
 };
 

@@ -1,2 +1,2 @@
-/std_func_gcc
-/normal_func_gcc
+/*_clang
+/*_gcc
