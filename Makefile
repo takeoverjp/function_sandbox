@@ -14,7 +14,7 @@ all: $(BINS)
 
 CXXFLAGS=-Og -g
 CXXFLAGS+=-W -Wall -Werror -Wno-unused-parameter -Wno-unused-variable
-# CXXFLAGS+=-DDEBUG
+CXXFLAGS+=-DNDEBUG
 
 define TEMPLATE
 $(basename $(1))_gcc: $(1)
