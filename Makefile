@@ -4,6 +4,10 @@ SRCS=\
 	macro_func.cc \
 	normal_func.cc \
 	std_func.cc \
+	func_ptr.cc \
+	# method.cc \
+	# virtual_method.cc \
+	# kj_func.cc \
 
 BINS=\
 	$(addsuffix _gcc,$(basename $(SRCS))) \
