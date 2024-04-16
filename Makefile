@@ -6,7 +6,7 @@ SRCS=\
 	std_func.cc \
 	func_ptr.cc \
 	method.cc \
-	# virtual_method.cc \
+	virtual_method.cc \
 	# kj_func.cc \
 
 BINS=\
