@@ -8,6 +8,7 @@ SRCS=\
 	method.cc \
 	virtual_method.cc \
 	kj_func.cc \
+	functor.cc \
 
 BINS=\
 	$(addsuffix _gcc,$(basename $(SRCS))) \
