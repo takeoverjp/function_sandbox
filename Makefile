@@ -10,6 +10,7 @@ SRCS=\
 	kj_func.cc \
 	functor.cc \
 	boost_func.cc \
+	constexpr_func.cc \
 
 BINS=\
 	$(addsuffix _gcc,$(basename $(SRCS))) \
