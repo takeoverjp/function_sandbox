@@ -9,6 +9,7 @@ SRCS=\
 	virtual_method.cc \
 	kj_func.cc \
 	functor.cc \
+	boost_func.cc \
 
 BINS=\
 	$(addsuffix _gcc,$(basename $(SRCS))) \
