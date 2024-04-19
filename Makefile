@@ -37,7 +37,5 @@ clean:
 
 run: all
 	for BIN in $(BINS); do \
-		echo $$BIN start; \
-		chrt -f 99 time ./$$BIN; \
-		echo; \
+		chrt -f 99 time -f %C,%e,%S,%U ./$$BIN; \
 	done
