@@ -2,8 +2,6 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include <functional>
-
 #include "common.h"
 
 static uint64_t increment(uint64_t num) { return num + 1; };
