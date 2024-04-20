@@ -1,6 +1,6 @@
 #pragma once
 
-uint64_t kLoopCount = 1000000000;
+static const uint64_t kLoopCount = 1000000000;
 
 #if defined(NDEBUG)
 #define PRINTF(...)
