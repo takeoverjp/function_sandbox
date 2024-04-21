@@ -16,7 +16,10 @@ BINS=\
 	$(addsuffix _gcc,$(basename $(SRCS))) \
 	$(addsuffix _clang,$(basename $(SRCS)))
 
-all: $(BINS)
+DUMPS=\
+	$(addsuffix .dump,$(basename $(BINS)))
+
+all: $(BINS) $(DUMPS)
 .PHONY: all
 
 CXXFLAGS=-Og -g
@@ -28,6 +31,10 @@ $(basename $(1))_gcc: $(1)
 	g++ $$(CXXFLAGS) -o $$@ $$^
 $(basename $(1))_clang: $(1)
 	clang++ $$(CXXFLAGS) -o $$@ $$^
+$(basename $(1))_gcc.dump: $(basename $(1))_gcc
+	objdump -SwC $$^ > $$@
+$(basename $(1))_clang.dump: $(basename $(1))_clang
+	objdump -SwC $$^ > $$@
 endef
 $(foreach src,$(SRCS),$(eval $(call TEMPLATE,$(src))))
 
