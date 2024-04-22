@@ -1,4 +1,3 @@
-#include <assert.h>
 #include <stdint.h>
 #include <stdio.h>
 
@@ -18,6 +17,6 @@ int main(int argc, char *argv[]) {
   // constexpr has loop/ops limitation...
   const uint64_t kLoopCount = 100000;
   constexpr uint64_t ret = increment_loop(kLoopCount);
-  assert(ret == kLoopCount);
+  printf("%ld\n", ret);
   return 0;
 }

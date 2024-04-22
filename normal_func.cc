@@ -1,4 +1,3 @@
-#include <assert.h>
 #include <stdint.h>
 #include <stdio.h>
 
@@ -11,6 +10,6 @@ int main(int argc, char *argv[]) {
   for (uint64_t i = 0; i < kLoopCount; i++) {
     ret = increment(ret);
   }
-  assert(ret == kLoopCount);
+  printf("%ld\n", ret);
   return 0;
 }
