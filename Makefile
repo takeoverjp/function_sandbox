@@ -16,35 +16,37 @@ BINS=\
 	$(addsuffix _gcc,$(basename $(SRCS))) \
 	$(addsuffix _clang,$(basename $(SRCS)))
 
-DUMPS=\
-	$(addsuffix .dump,$(basename $(BINS)))
+ASMS=\
+	$(addsuffix .asm,$(basename $(BINS)))
 
-all: $(BINS) $(DUMPS)
+all: $(BINS) $(ASMS)
 .PHONY: all
 
 CXXFLAGS=-Og -g
 CXXFLAGS+=-W -Wall -Werror -Wno-unused-parameter -Wno-unused-variable
-CXXFLAGS+=-DNDEBUG
+# CXXFLAGS+=-DNDEBUG
 
-define TEMPLATE
+define TEMPLATE_SRC2BIN
 $(basename $(1))_gcc: $(1)
 	g++ $$(CXXFLAGS) -o $$@ $$^
 $(basename $(1))_clang: $(1)
 	clang++ $$(CXXFLAGS) -o $$@ $$^
-$(basename $(1))_gcc.dump: $(basename $(1))_gcc
-	objdump -SwC $$^ > $$@
-$(basename $(1))_clang.dump: $(basename $(1))_clang
+endef
+$(foreach src,$(SRCS),$(eval $(call TEMPLATE_SRC2BIN,$(src))))
+
+define TEMPLATE_BIN2ASM
+$(1).asm: $(1)
 	objdump -SwC $$^ > $$@
 endef
-$(foreach src,$(SRCS),$(eval $(call TEMPLATE,$(src))))
+$(foreach bin,$(BINS),$(eval $(call TEMPLATE_BIN2ASM,$(bin))))
 
 clean:
-	rm -f $(BINS)
+	rm -f $(BINS) $(ASMS)
 .PHONY: clean
 
 result.csv: all
 	rm -f $@
 	for BIN in $(BINS); do \
-		chrt -f 99 time -f %C,%e,%S,%U ./$$BIN 2>&1 | tee -a $@; \
+		chrt -f 99 time -f %C,%e,%S,%U ./$$BIN 2>&1 > /dev/null | tee -a $@; \
 	done
 	sed -i -r -e 's|^./||' -e 's/_(gcc|clang),/,\1,/' result.csv
