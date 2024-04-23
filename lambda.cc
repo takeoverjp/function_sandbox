@@ -3,7 +3,7 @@
 
 #include "common.h"
 
-static uint64_t increment(uint64_t num) { return num + 1; };
+static auto increment = [](uint64_t num) { return num + 1; };
 
 int main(int argc, char *argv[]) {
   uint64_t ret = 0;
